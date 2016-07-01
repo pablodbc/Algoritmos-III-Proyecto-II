@@ -19,7 +19,7 @@ public class Floyd {
 	 *  @param G directed graph to be processed
 	 *
 	 */
-     public Floyd(EdgeWeightedDigraph G) {
+     public Floyd(EdgeWeightedGraph G) {
 
      	D = new double[G.V()][G.V()];
      	W = new double[G.V()][G.V()];
@@ -35,10 +35,10 @@ public class Floyd {
      	}
 
      	for (int v = 0; v < G.V(); v++) {
-     		for (DirectedEdge e : G.adj(v)) {
-     			D[v][e.to()] = e.weight();
-     			W[v][e.to()] = e.weight();
-     			next[v][e.to()] = e.to();
+     		for (Edge e : G.adj(v)) {
+     			D[v][e.other(v)] = e.weight();
+     			W[v][e.other(v)] = e.weight();
+     			next[v][e.other(v)] = e.other(v);
      		}
      	}
 
@@ -74,12 +74,12 @@ public class Floyd {
 	 *
 	 *  @return set of edges of shortest path from <tt>s</tt> to <tt>t</tt> as a list
 	 */
-     public ArrayList<DirectedEdge> path(int s, int t) {
+     public ArrayList<Edge> path(int s, int t) {
 	  
-	 	ArrayList<DirectedEdge> path = new ArrayList<DirectedEdge>();
+	 	ArrayList<Edge> path = new ArrayList<Edge>();
 		if(next[s][t] == null) return null;
 		while(s != t) {
-	 		path.add(new DirectedEdge(s, next[s][t], W[s][next[s][t]]));
+	 		path.add(new Edge(s, next[s][t], W[s][next[s][t]]));
 	 		s = next[s][t];
 	 	}
 		return path; 
