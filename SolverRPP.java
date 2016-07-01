@@ -2,9 +2,8 @@ import java.util.*;
 
 public class SolverRPP{
 	private static Integer V;
-	private static EdgeWeightedGraph G;
-	private static EdgeWeightedGraph Gr;
 	private static DepthFirstSearch DFS;
+	private static EdgeWeightedGraph G,Gr,Gt;
 	private static Integer aristasRequeridas;
 	private static Integer aristasNoRequeridas;
 	private static LinkedHashSet<Integer> vertexInGraphR;
@@ -75,7 +74,7 @@ public class SolverRPP{
 		return GCC;
 	}
 
-	
+
 
 	public static void main(String[] args){
 		In in = new In(args[0]);
@@ -88,6 +87,8 @@ public class SolverRPP{
 
 			}
 		}
+		EdgeWeightedGraph Gt = armarGCC(Gr);
+		
 
 
 	}
