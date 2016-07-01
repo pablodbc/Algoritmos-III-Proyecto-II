@@ -46,6 +46,8 @@ CLASSES = \
 	Edge.java \
 	EdgeWeightedGraph.java \
 	Kruskal.java \
+	minCostPerfectMatchingGreedy.java \
+	minCostPerfectMatchingVertexScan.java \
 	SolverRPP.java \
 #
 # the default make target entry
