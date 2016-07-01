@@ -1,5 +1,5 @@
 import java.util.*;
 
-public class SolverRpp{
+public class SolverRPP{
 	
 }
