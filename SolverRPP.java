@@ -1,6 +1,7 @@
 import java.util.*;
 
 public class SolverRPP{
+<<<<<<< HEAD
 	private static Integer V;
 	private static Integer req;
 	private static Integer no_req;	
@@ -21,4 +22,7 @@ public class SolverRPP{
 		readFile(in);
 	}
 
+=======
+	
+>>>>>>> 2eb89ec166c02eee4ea6bf785edd549a62db4a9f
 }
