@@ -49,12 +49,12 @@ public class minCostPerfectMatchingVertexScan {
 
     		if (match[v] || edges[v].size() <= 0) continue;
     		
-    		Edge e = edges[v].get(edges[v].size() - 1);
-    		edges[v].remove(edges[v].size() - 1);
+    		Edge e = edges[v].get(0);
+    		edges[v].remove(0);
 			int u = e.other(v);
 			while (edges[v].size() > 0 && vis[v][u] == true) {
-    			e = edges[v].get(edges[v].size() - 1);
-    			edges[v].remove(edges[v].size() - 1);
+    			e = edges[v].get(0);
+    			edges[v].remove(0);
 				u = e.other(v);				
 			}
 
