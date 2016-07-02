@@ -11,7 +11,7 @@ import java.util.*;
 public class eulerianCycle{
 
 	private Integer[] count;
-	private LinkedList<Edge>[] Gp;
+	private ArrayList<Edge>[] Gp;
 	private EdgeWeightedGraph G;
 	private ArrayList<Edge> cycle;
 	private boolean[][] vis;
@@ -23,16 +23,17 @@ public class eulerianCycle{
 	 *
 	 */
 	public eulerianCycle(EdgeWeightedGraph G){
-		
+
 		count = new Integer[G.V()];
 		cycle = new ArrayList<Edge>();
-		Gp = new LinkedList[G.V()];
+		Gp = new ArrayList[G.V()];
 		vis = new boolean[G.V()][G.V()];
 
 		for (int v = 0; v < G.V(); v++) {
+    		Gp[v] = new ArrayList();
 			for (Edge e : G.adj(v)) {
 				Gp[v].add(e);
-			}
+			}   
 			for (int u = 0; u < G.V(); u++)
 				vis[v][u]=false;
 		}
@@ -46,9 +47,10 @@ public class eulerianCycle{
 	 *
 	 */
 	private void DFS(int v) {
-		while(!Gp[v].isEmpty() && vis[v][Gp[v].peekFirst().other(v)]) Gp[v].pollFirst();
+		while(!Gp[v].isEmpty() && vis[v][Gp[v].get(0).other(v)]) Gp[v].remove(0);
 		if (!Gp[v].isEmpty()) {
-			Edge e = Gp[v].pollFirst();
+			Edge e = Gp[v].get(0);
+			Gp[v].remove(0);
 			cycle.add(e);
 			vis[v][e.other(v)] = vis[e.other(v)][v] = true;
 			DFS(e.other(v));

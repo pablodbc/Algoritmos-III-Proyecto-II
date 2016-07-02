@@ -160,7 +160,7 @@ public class SolverRPP{
 		eulerianCycle eCycle = new eulerianCycle(Gr);
 		if(eCycle.cycle() != null)
 			for(Edge i : eCycle.cycle()){
-				StdOut.println((i.either()) + "-" + (i.other(i.either())) + " ");
+				StdOut.println(((i.either())+1) + "-" + ((i.other(i.either()))+1) + " ");
 			}
 		StdOut.println();
 	}
