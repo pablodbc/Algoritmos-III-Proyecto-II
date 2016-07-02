@@ -2,6 +2,7 @@ import java.util.*;
 
 public class SolverRPP{
 	private static Integer V;
+	private static Kruskal MST;
 	private static DepthFirstSearch DFS;
 	private static EdgeWeightedGraph G,Gr,Gt;
 	private static Integer aristasRequeridas;
@@ -88,7 +89,7 @@ public class SolverRPP{
 			}
 		}
 		EdgeWeightedGraph Gt = armarGCC(Gr);
-		
+		MST = new Kruskal(Gt);
 
 
 	}
