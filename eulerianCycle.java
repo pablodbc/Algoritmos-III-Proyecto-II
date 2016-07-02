@@ -24,6 +24,8 @@ public class eulerianCycle{
 	 */
 	public eulerianCycle(EdgeWeightedGraph G){
 
+		StdOut.println(G);
+
 		count = new Integer[G.V()];
 		cycle = new ArrayList<Edge>();
 		Gp = new ArrayList[G.V()];
@@ -47,13 +49,14 @@ public class eulerianCycle{
 	 *
 	 */
 	private void DFS(int v) {
-		while(!Gp[v].isEmpty() && vis[v][Gp[v].get(0).other(v)]) Gp[v].remove(0);
-		if (!Gp[v].isEmpty()) {
+		while(!Gp[v].isEmpty()) {
+			while(!Gp[v].isEmpty() && vis[v][Gp[v].get(0).other(v)]) Gp[v].remove(0);
+			if(Gp[v].isEmpty()) break;
 			Edge e = Gp[v].get(0);
 			Gp[v].remove(0);
-			cycle.add(e);
 			vis[v][e.other(v)] = vis[e.other(v)][v] = true;
 			DFS(e.other(v));
+			cycle.add(e);
 		}
 	}
 
