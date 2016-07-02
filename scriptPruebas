@@ -1,0 +1,22 @@
+#!/bin/bash
+# Shell script to test RPP algorithm
+
+# Camino del directorio que contiene archivos de prueba del RPP
+directorioPruebas="prueba/URPP"
+
+for casoPrueba in $directorioPruebas/*
+do
+	echo "-----------------------------------------------"
+	echo $casoPrueba
+	echo -e "\n"
+
+	### GREEDY TEST ###
+	echo -e "GREEDY\n"
+	#java SolverRPP -g casoPrueba
+
+	### VERTEX SCAN TEST ###
+	echo -e "VERTEX SCAN\n"
+        #java SolverRPP -s casoPrueba
+	#java SolverRPP -s casoPrueba
+	#java SolverRPP -s casoPrueba
+done
