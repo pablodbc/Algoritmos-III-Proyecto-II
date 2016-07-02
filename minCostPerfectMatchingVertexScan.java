@@ -12,6 +12,7 @@ import java.util.*;
 public class minCostPerfectMatchingVertexScan {
 
 	private HashSet<Edge> M;
+	private boolean[][] vis;
 
 	/**
 	 *  Calculates minimum cost perfect matching in given graph <tt>G</tt>
@@ -24,18 +25,23 @@ public class minCostPerfectMatchingVertexScan {
 		M = new HashSet<Edge>();
 		boolean[] match = new boolean[G.V()];
 		List<Integer> random = new ArrayList<Integer>();
-		TreeSet<Edge>[] edges = new TreeSet[G.V()];
-	
+		ArrayList<Edge>[] edges = new ArrayList[G.V()];
+		vis = new boolean[G.V()][G.V()];
+
     	for (int v = 0; v < G.V(); v++) {
     		random.add(v);
     		match[v] = false;
+    		edges[v] = new ArrayList();
     		for (Edge e : G.adj(v)) {
     			edges[v].add(e);
     		}
+    		Collections.sort(edges[v]);
+    		for (int u = 0; u < G.V(); u++)
+    			vis[v][u] = false;
     	}
 
     	Collections.shuffle(random);
-	
+
     	while (!random.isEmpty()) {
     		
     		int v = random.get(0);
@@ -43,8 +49,15 @@ public class minCostPerfectMatchingVertexScan {
 
     		if (match[v]) continue;
     		
-    		Edge e = edges[v].last();
+    		Edge e = edges[v].get(edges[v].size() - 1);
+    		edges[v].remove(edges[v].size() - 1);
 			int u = e.other(v);
+			while (edges[v].size() > 0 && vis[v][u] == true) {
+    			e = edges[v].get(edges[v].size() - 1);
+    			edges[v].remove(edges[v].size() - 1);
+				u = e.other(v);				
+			}
+
 			match[v] = match[u] = true;
 			M.add(e);
 
