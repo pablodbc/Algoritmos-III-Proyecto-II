@@ -58,4 +58,8 @@ public class minCostPerfectMatchingVertexScan {
 			}
     	}
 	}
+
+	public HashSet<Edge> getEdges(){
+		return M;
+	}
 }

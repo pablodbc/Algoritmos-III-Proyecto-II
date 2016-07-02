@@ -22,14 +22,14 @@ public class minCostPerfectMatchingGreedy {
 		Integer count = G.V();
 		M = new HashSet<Edge>();
 		boolean[] match = new boolean[G.V()];
-		TreeSet<Edge> edges = new TreeSet<Edge>();
+		ArrayList<Edge> edges = new ArrayList<Edge>();
 	
     	for (int v = 0; v < G.V(); v++)
     		match[v] = false;
 	
 		for (Edge e : G.edges())
 			edges.add(e);
-
+		Collections.sort(edges);
     	for (Edge e : edges) {
     		int v = e.either();
     		int u = e.other(v);
