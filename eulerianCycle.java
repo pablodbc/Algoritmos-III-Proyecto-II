@@ -24,8 +24,6 @@ public class eulerianCycle{
 	 */
 	public eulerianCycle(EdgeWeightedGraph G){
 
-		StdOut.println(G);
-
 		count = new Integer[G.V()];
 		cycle = new ArrayList<Edge>();
 		Gp = new ArrayList[G.V()];
@@ -65,5 +63,12 @@ public class eulerianCycle{
 	 */
 	public ArrayList<Edge> cycle() {
 		return cycle;
+	}
+
+	/**
+	 *	Returns first element in eulerian cycle
+	 */
+	public Edge first() {
+		return cycle.get(0);
 	}
 }

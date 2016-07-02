@@ -160,12 +160,15 @@ public class SolverRPP{
 	public static void lines23_24(){
 		eulerianCycle eCycle = new eulerianCycle(Gr);
 		Double peso = 0.0;
-		if(eCycle.cycle() != null)
+		if(eCycle.cycle() != null) {
+			int v = eCycle.first().either();
 			for(Edge i : eCycle.cycle()){
 				peso += i.weight();
-				StdOut.println(((i.either())+1) + "-" + ((i.other(i.either()))+1) + " ");
+				StdOut.print((v+1) + " ");
+				v = i.other(v);
 			}
-		StdOut.println();
+		}
+		StdOut.println("1");
 		StdOut.println(peso);
 		tiempoFinal = System.nanoTime();
 		StdOut.printf("%.3f segs.\n", ((tiempoFinal - tiempoInicial)/1e9));
