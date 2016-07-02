@@ -43,6 +43,9 @@ public class minCostPerfectMatchingGreedy {
     	}
 	}
 
+	/**
+	 *	Returns set of edges of the perfect matching
+	 */
 	public HashSet<Edge> getEdges(){
 		return M;
 	}

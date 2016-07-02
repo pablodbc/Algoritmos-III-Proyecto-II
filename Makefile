@@ -46,6 +46,7 @@ CLASSES = \
 	Edge.java \
 	EdgeWeightedGraph.java \
 	Kruskal.java \
+	eulerianCycle.java \
 	minCostPerfectMatchingGreedy.java \
 	minCostPerfectMatchingVertexScan.java \
 	SolverRPP.java \
