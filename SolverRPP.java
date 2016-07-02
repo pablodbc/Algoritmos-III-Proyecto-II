@@ -3,6 +3,7 @@ import java.util.*;
 public class SolverRPP{
 	private static Integer V;
 	private static Floyd floyd;
+	private static Kruskal MST;
 	private static DepthFirstSearch DFS;
 	private static EdgeWeightedGraph G,Gr,Gt;
 	private static Integer aristasRequeridas;
@@ -114,5 +115,7 @@ public class SolverRPP{
 		floyd = new Floyd(G);
 		lines9_15();
 		lines16_22();
+
+
 	}
 }
