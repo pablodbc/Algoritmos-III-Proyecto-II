@@ -47,7 +47,7 @@ public class minCostPerfectMatchingVertexScan {
     		int v = random.get(0);
     		random.remove(0);
 
-    		if (match[v]) continue;
+    		if (match[v] || edges[v].size() <= 0) continue;
     		
     		Edge e = edges[v].get(edges[v].size() - 1);
     		edges[v].remove(edges[v].size() - 1);
