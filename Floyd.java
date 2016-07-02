@@ -62,9 +62,9 @@ public class Floyd {
 	 *
 	 *  @return weight of shortest path from <tt>s</tt> to <tt>t</tt>
 	 */
-     public double dist(int s, int t) {
-	 	return D[s][t];
-     }
+	public double dist(int s, int t) {
+		return D[s][t];
+	}
 
 	/**
 	 *  Returns directed edges of shortest path from vertex <tt>s</tt> to vertex <tt>t</tt>.
@@ -74,14 +74,14 @@ public class Floyd {
 	 *
 	 *  @return set of edges of shortest path from <tt>s</tt> to <tt>t</tt> as a list
 	 */
-     public ArrayList<Edge> path(int s, int t) {
+	public ArrayList<Edge> path(int s, int t) {
 	  
-	 	ArrayList<Edge> path = new ArrayList<Edge>();
+		ArrayList<Edge> path = new ArrayList<Edge>();
 		if(next[s][t] == null) return null;
 		while(s != t) {
-	 		path.add(new Edge(s, next[s][t], W[s][next[s][t]]));
-	 		s = next[s][t];
+			path.add(new Edge(s, next[s][t], W[s][next[s][t]]));
+			s = next[s][t];
 	 	}
 		return path; 
-     }
+	}
 }
