@@ -11,6 +11,7 @@ import java.util.*;
  *
  */
 public class SolverRPP{
+	private static long tiempoFinal, tiempoInicial;
 	private static Integer V;
 	private static Floyd floyd;
 	private static Kruskal MST;
@@ -163,9 +164,12 @@ public class SolverRPP{
 				StdOut.println(((i.either())+1) + "-" + ((i.other(i.either()))+1) + " ");
 			}
 		StdOut.println();
+		tiempoFinal = System.nanoTime();
+		StdOut.printf("%.3f segs.\n", ((tiempoFinal - tiempoInicial)/1e9));
 	}
 
 	public static void main(String[] args){
+		tiempoInicial = System.nanoTime();
 		if(args.length !=2){
 			throw new IllegalArgumentException("Formato invalido, Debe correr el programa con >java SolverRPP [-g] [-s] <instancia> , donde [-g] y [-s] representan la heuristica que se desea utilizar e <instancia> es la direccion del archivo con la instancia de RPP a resolver.");
 		}
