@@ -13,7 +13,7 @@ public class eulerianCycle{
 	private Integer[] count;
 	private ArrayList<Edge>[] Gp;
 	private EdgeWeightedGraph G;
-	private ArrayList<Edge> cycle;
+	public ArrayList<Edge> cycle;
 	private boolean[][] vis;
 
 	/**

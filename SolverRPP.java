@@ -161,11 +161,19 @@ public class SolverRPP{
 		eulerianCycle eCycle = new eulerianCycle(Gr);
 		Double peso = 0.0;
 		if(eCycle.cycle() != null) {
-			int v = eCycle.first().either();
+			int v, u, vprev = eCycle.cycle.get(0).either();
 			for(Edge i : eCycle.cycle()){
+				v = i.either();
+				u = i.other(v);
 				peso += i.weight();
-				StdOut.print((v+1) + " ");
-				v = i.other(v);
+				
+				if(v == vprev) {
+					StdOut.print((v+1) + " ");
+					vprev = u;
+				} else {
+					StdOut.print((u+1) + " ");
+					vprev = v;
+				}
 			}
 		}
 		StdOut.println("1");
