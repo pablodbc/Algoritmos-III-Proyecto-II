@@ -21,6 +21,15 @@ public class SolverRPP{
 	private static Integer aristasNoRequeridas;
 	private static HashMap<Edge,ArrayList<Edge> > EtoP;
 
+
+	/**
+	 *	Procedimiento que lee y valida el archivo que contiene
+	 *	la instancia RPP pasada por consola. Se hace uso de expresiones
+	 *  regulares para limpiar la linea actual de caracteres no numericos y
+	 *	se arman los grafos iniciales para empezar a resolver el problema.
+	 *
+	 *	@param In in
+	 */
 	public static void readFile(In in){
 		in.readLine(); // Se ignora el nombre de la instancia
 		in.readLine(); // Se ignora el comentario
@@ -63,6 +72,14 @@ public class SolverRPP{
 
 	}
 
+	/**
+	 *	Procedimiento al cual se accede si el grafo inducido por las aristas
+	 *	requeridas no es conexo. Se hace que el grafo Gr se convierta en un grafo
+	 *	conexo a traves de 3 algoritmos: Un DFS para calcular las componentes conexas
+	 *	del grafo, el algoritmo de Kruskal para calcular el arbol cobertor minimo
+	 *	y el algoritmo de Floyd-Warshall para calcular caminos de costo minimo.
+	 */
+
 	public static void lines9_15(){
 		Double minCost;
 		Integer either = 0;
@@ -100,6 +117,15 @@ public class SolverRPP{
 		for(Edge e : H) Gr.addEdge(e);
 	}
 
+	/**
+	 *	Procedimiento al cual se accede si el grafo es conexo pero no es par
+	 *	Se hace uso del algoritmo de Floyd-Warshall para agregar aristas de costo
+	 *	minimo asociadas a un camino de costo minimo en el grafo original G.
+	 *	Luego se aplica alguno de los dos algoritmos de apareamiento perfecto
+	 *	costo minimo (Depende del argumento pasado por consola) para agregar estas
+	 *	nuevas aristas al grafo Gr.
+	 */
+
 	public static void lines16_22(){
 		int N = 0;
 		Integer[] oddVertex = new Integer[Gr.V()];
@@ -124,11 +150,18 @@ public class SolverRPP{
 				for(Edge e : MCPMV.getEdges()) Gr.addEdge(e);
 			}
 		}
+
+	/**
+	 *	Procedimiento al cual se accede si el grafo es conexo y par. Ya en este punto
+	 *	se calcula y se imprime el ciclo euleriano que debe contener el grafo Gr
+	 */
+
 	public static void lines23_24(){
 		eulerianCycle eCycle = new eulerianCycle(Gr);
-		for(Edge i : eCycle.cycle()){
-			StdOut.println((i.either()) + "-" + (i.other(i.either())) + " ");
-		}
+		if(eCycle.cycle() != null)
+			for(Edge i : eCycle.cycle()){
+				StdOut.println((i.either()) + "-" + (i.other(i.either())) + " ");
+			}
 		StdOut.println();
 	}
 
