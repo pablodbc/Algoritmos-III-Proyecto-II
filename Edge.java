@@ -95,6 +95,32 @@ public class Edge implements Comparable<Edge> {
         else if (this.weight() > that.weight()) return +1;
         else                                    return  0;
     }
+    /**
+     * Compares two edges and returns true if they both are equal. 
+     * 
+     *
+     * @param  that the other edge
+     * @return a negative integer, zero, or positive integer depending on whether
+     *         the weight of this is less than, equal to, or greater than the
+     *         argument edge
+     */
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if(object instanceof Edge) {
+            int vOther = ((Edge)object).either();
+            int wOther = ((Edge)object).other(vOther);
+            double weightOther =  ((Edge)object).weight();
+            return ((this.v == vOther && this.w == wOther) || (this.v == wOther && this.w == vOther)) && this.weight == weightOther;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode(){
+        return this.v * this.w * (int)this.weight;
+    }
+
 
     /**
      * Returns a string representation of this edge.

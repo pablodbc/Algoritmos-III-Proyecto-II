@@ -35,11 +35,15 @@ public class minCostPerfectMatchingGreedy {
     		int u = e.other(v);
     		if (!match[v] && !match[u]) {
     			M.add(e);
-    			match[v] = match[u] = false;
+    			match[v] = match[u] = true;
     			count -= 2;
     			if (count <= 0) 
     				break;
     		}
     	}
+	}
+
+	public HashSet<Edge> getEdges(){
+		return M;
 	}
 }
