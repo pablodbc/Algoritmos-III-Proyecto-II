@@ -46,7 +46,7 @@ public class eulerianCycle{
 	 *
 	 */
 	private void DFS(int v) {
-		while(!Gp[v].isEmpty() && vis[v][Gp[v].pollFirst().other(v)]) Gp[v].pollFirst();
+		while(!Gp[v].isEmpty() && vis[v][Gp[v].peekFirst().other(v)]) Gp[v].pollFirst();
 		if (!Gp[v].isEmpty()) {
 			Edge e = Gp[v].pollFirst();
 			cycle.add(e);
